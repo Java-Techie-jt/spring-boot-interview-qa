@@ -1,7 +1,6 @@
 package com.javatechie;
 
-import com.javatechie.common.MailConfig;
-import com.javatechie.config.SecurityConfig;
+import com.javatechie.config.DataSourceConfig;
 import com.javatechie.di.OrderService;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,42 +8,62 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.aop.AopAutoConfiguration;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.core.env.Environment;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RestController;
 
 //@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class,AopAutoConfiguration.class})
 @SpringBootApplication
 public class InterviewQaApplication implements CommandLineRunner {
 
-    //    @Value("${offer.discount.price}")
-//    private int discountValue;
-    @Autowired
-    private Environment environment;
-//    @Value("${spring.profiles.active}")
-//    private String activeProfile;
+    @Value("${discount.offer.price}")
+    private int discountPrice;
+
+    @Value("${spring.profiles.active}")
+    private String envArgs;
 
     @Autowired
-    private MailConfig mailConfig;
+    private Environment environment;
+
+    @Autowired
+    private DataSourceConfig config;
+
+
+
+    @PostConstruct
+    public void initLogic(){
+        System.out.println("PostConstruct logic executed ...!");
+        //connection pool logic
+        //kafka producer/consumer instantiate
+        //data shedding
+        //external API call
+    }
 
 
     public static void main(String[] args) {
         //ConfigurableApplicationContext context =
         System.out.println("SpringApplication run() method ....... executed");
-        SpringApplication.run(InterviewQaApplication.class, args);
+        ConfigurableApplicationContext context = SpringApplication.run(InterviewQaApplication.class, args);
+        OrderService service = context.getBean("orderService", OrderService.class);
+       // service.test();
+
     }
 
     @Override
     public void run(String... args) throws Exception {
         //DB connection
         //populate some data to the db
-        // pre processing logic you want to perform
-        System.out.println("**************" + environment.getProperty("offer.discount.price"));
-       // System.out.println("PROFILE : " + activeProfile);
-        System.out.println(mailConfig);
+        // pre-processing logic you want to perform
+       // System.out.println("DISCOUNT PRICE :  "+environment.getProperty("discount.offer.price"));
+
+        System.out.println("DISCOUNT PRICE :  "+ discountPrice);
+        System.out.println(envArgs);
+        System.out.println("Environment variable :  "+environment.getProperty("spring.profiles.active"));
+        System.out.println("CONFIG VALUE : "+config);
         System.out.println("CommandLineRunner run() method ....... executed");
     }
 }
