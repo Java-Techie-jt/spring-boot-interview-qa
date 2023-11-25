@@ -10,11 +10,11 @@ public class PasswordValidationBeanPostProcessor implements BeanPostProcessor {
 
     @Override
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
-        if (bean instanceof User user) {
-            if (!isValidPassword(user.getPassword())) {
-                throw new IllegalArgumentException("Invalid password for user: " + user.getUsername());
-            }
-        }
+//        if (bean instanceof User user) {
+//            if (!isValidPassword(user.getPassword())) {
+//                throw new IllegalArgumentException("Invalid password for user: " + user.getUsername());
+//            }
+//        }
         return bean;
     }
 

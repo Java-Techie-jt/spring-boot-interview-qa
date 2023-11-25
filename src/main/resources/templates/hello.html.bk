@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>page loading</title>
+</head>
+<body>
+<h1 style="background-color:DodgerBlue;">Welcome message from controller</h1>
+</body>
+</html>

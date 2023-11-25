@@ -1,0 +1,17 @@
+{
+  "bookId": 123,
+  "title": "Spring in Action",
+  "publicationYear": 2022,
+  "authors": [
+    {
+      "authorId": 1,
+      "name": "Craig Walls",
+      "birthYear": 1978
+    },
+    {
+      "authorId": 2,
+      "name": "John Doe",
+      "birthYear": 1985
+    }
+  ]
+}

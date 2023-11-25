@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Upload Example</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        form {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        .file-upload-label {
+            display: inline-block;
+            background-color: #3498db;
+            color: #fff;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #file-label {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        input[type="submit"] {
+            background-color: #2ecc71;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #27ae60;
+        }
+
+        /* Display success or error message */
+        .message {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        .success {
+            color: #27ae60;
+        }
+
+        .error {
+            color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>File Upload Example</h2>
+
+    <!-- Display success or error message -->
+    <div th:if="${message}" class="message" th:text="${message}" th:class="${message.startsWith('File has been uploaded successfully') ? 'success' : 'error'}"></div>
+
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <label for="file" class="file-upload-label">Choose a file</label>
+        <input type="file" name="file" id="file" onchange="updateFileName()" />
+        <div id="file-label"></div>
+        <input type="submit" value="Upload" />
+    </form>
+</div>
+
+<script>
+        function updateFileName() {
+            var fileInput = document.getElementById('file');
+            var fileLabel = document.getElementById('file-label');
+            fileLabel.innerText = fileInput.files.length > 0 ? 'Selected File: ' + fileInput.files[0].name : '';
+        }
+    </script>
+</body>
+</html>

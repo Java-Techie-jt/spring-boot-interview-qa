@@ -14,6 +14,7 @@ import org.springframework.beans.factory.config.Scope;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
@@ -24,6 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 //@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class,AopAutoConfiguration.class})
 @SpringBootApplication
+@EnableFeignClients
 public class InterviewQaApplication implements CommandLineRunner {
 
     @Value("${discount.offer.price}")
