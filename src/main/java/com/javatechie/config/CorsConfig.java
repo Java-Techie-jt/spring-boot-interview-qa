@@ -13,7 +13,7 @@
 //    @Override
 //    public void addCorsMappings(CorsRegistry registry) {
 //        registry.addMapping("/api/**")
-//                .allowedOrigins("http://localhost:3000") // Add your front-end application's origin
+//                .allowedOrigins("*") // Add your front-end application's origin
 //                .allowedMethods("GET", "POST", "PUT", "DELETE")
 //                .allowedHeaders("Origin", "Content-Type", "Accept", "Authorization")
 //                .allowCredentials(true)

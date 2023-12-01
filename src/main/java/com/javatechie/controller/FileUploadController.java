@@ -1,5 +1,6 @@
 package com.javatechie.controller;
 
+import io.swagger.v3.oas.annotations.Hidden;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,12 +16,13 @@ import java.nio.file.Paths;
 @Controller
 public class FileUploadController {
 
-    @GetMapping("/")
+    @GetMapping("/home")
     public String index() {
         return "upload";
     }
 
     @PostMapping("/upload")
+    @Hidden
     public String uploadFile(@RequestParam("file") MultipartFile file, Model model) throws IOException {
         Path path = Paths.get("/Users/javatechie/Desktop/Files/" + file.getOriginalFilename());
         Files.write(path, file.getBytes());

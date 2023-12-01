@@ -23,6 +23,8 @@ public class ProductService {
     }
 
     public List<Product> getProductByType(String productType) {
-        return productList.stream().filter(product -> product.getProductType().equals(productType)).collect(Collectors.toList());
+        return productList.stream()
+                .filter(product -> product.getProductType().equals(productType))
+                .collect(Collectors.toList());
     }
 }
