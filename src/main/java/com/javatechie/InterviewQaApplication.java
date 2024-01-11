@@ -31,8 +31,6 @@ public class InterviewQaApplication implements CommandLineRunner {
     @Value("${discount.offer.price}")
     private int discountPrice;
 
-    @Value("${spring.profiles.active}")
-    private String envArgs;
 
     @Autowired
     private Environment environment;
@@ -93,7 +91,6 @@ public class InterviewQaApplication implements CommandLineRunner {
         // System.out.println("DISCOUNT PRICE :  "+environment.getProperty("discount.offer.price"));
 
         System.out.println("DISCOUNT PRICE :  " + discountPrice);
-        System.out.println(envArgs);
         System.out.println("Environment variable :  " + environment.getProperty("spring.profiles.active"));
         System.out.println("CONFIG VALUE : " + config);
         System.out.println("CommandLineRunner run() method ....... executed");

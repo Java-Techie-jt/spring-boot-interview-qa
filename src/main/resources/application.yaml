@@ -13,3 +13,9 @@ myList:
   - apple
   - dfhjkd
   - hcdkh
+
+
+#spring:
+#  profiles:
+#    active:
+#      - stg

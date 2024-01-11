@@ -3,9 +3,14 @@ package com.javatechie.controller;
 import com.javatechie.dto.Product;
 import com.javatechie.service.ProductService;
 import io.swagger.v3.oas.annotations.Hidden;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
+import org.springframework.dao.DataRetrievalFailureException;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.HttpClientErrorException;
 
 import java.util.List;
 
@@ -15,6 +20,12 @@ public class ProductController {
 
     @Autowired
     private ProductService service;
+
+    @PostMapping
+    public List<Product> saveProduct(@Valid @RequestBody Product product){
+        return service.saveProduct(product);
+    }
+
 
     @GetMapping("/search/{productType}")//404
     public ResponseEntity<?> getProducts(@PathVariable String productType) {
@@ -37,6 +48,13 @@ public class ProductController {
         return productType != null
                 ? service.getProductByType(productType)
                 : service.getProducts();
+    }
+
+
+
+    @GetMapping("/stores/{flag}/{storeId}")
+    public String fetchStoreLocation(@PathVariable boolean flag,@PathVariable String storeId){
+       return service.fetchLocation(flag, storeId);
     }
 
 

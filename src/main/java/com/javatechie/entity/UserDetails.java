@@ -1,4 +1,4 @@
-package com.javatechie.dto;
+package com.javatechie.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
