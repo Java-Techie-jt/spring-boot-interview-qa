@@ -22,7 +22,7 @@ public class ProductController {
     private ProductService service;
 
     @PostMapping
-    public List<Product> saveProduct(@Valid @RequestBody Product product){
+    public List<Product> saveProduct(@RequestBody @Valid Product product){
         return service.saveProduct(product);
     }
 

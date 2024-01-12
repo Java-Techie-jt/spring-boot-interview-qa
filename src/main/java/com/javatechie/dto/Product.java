@@ -6,6 +6,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
+import java.util.Date;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -19,9 +22,21 @@ public class Product {
     @Max(value = 100000,message = "price shouldn't be exceed more than 100000")
     private double price;
     @NotBlank(message = "model shouldn't be null or empty")
-    //@Pattern(regexp = "[A-Za-z0-9]+")
+//    @Pattern(regexp = "[A-Za-z0-9]+")
     private String model;
     @NotBlank(message = "productType shouldn't be null or empty")
     @ValidateProductType
     private String productType;
+
+//    @Email
+//    private String emailId;
+//
+//    @AssertFalse
+//    @AssertTrue
+//    private boolean isActive;
+//
+//    @Future
+//    @Past
+//    private Date birthDate;
+
 }
